@@ -7,7 +7,7 @@ int main(void)
 		
 	printf("$ ");
 	/* &text is addr of buffer, &len is how long */
-	if (getline(&text, &len, stdin) != 1) /* if not error */
+	if (getline(&text, &len, stdin) != -1) /* if not error */
 	{
 		printf("%s", text);
 		return (0);
