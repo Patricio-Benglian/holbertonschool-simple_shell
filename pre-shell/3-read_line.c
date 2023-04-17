@@ -2,17 +2,17 @@
 
 int main(void)
 {
-
-	char *text = NULL;
-	size_t len = 0;
-	// FILE *stream;
+	char *text = malloc(1024);
+	size_t len = 1024;
 		
-
 	printf("$ ");
-	while (getline(&text, &len, 0) != -1)
+	/* &text is addr of buffer, &len is how long */
+	if (getline(&text, &len, stdin) != 1) /* if not error */
 	{
-		printf("%s\n", text);
+		printf("%s", text);
 		return (0);
 	}
+	printf("error");
 	return (-1);
+
 }
