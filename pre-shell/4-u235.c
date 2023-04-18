@@ -66,13 +66,12 @@ int main(void)
 		token = strtok(NULL, " ");
 		count++;
 	}
-	count++; /* add one more count for NULL */
 	free(atom2); /* free copy of string */
 
 	/* assign array tokens */
 	array = malloc(sizeof(char *) * count);
 	token = strtok(atom, " ");
-	for (i = 1; i < count - 1; i++)
+	for (i = 1; i < count; i++)
 	{
 		//array[i] = malloc(sizeof(_strlen(token)));
 		array[i] = _strdup(token);
