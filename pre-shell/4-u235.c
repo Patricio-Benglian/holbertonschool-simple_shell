@@ -1,33 +1,85 @@
 #include "main.h"
 
+/**
+ * _strdup - returns pointer to a copy of string
+ * @str: string
+ * Return: Always 0 (Success)
+ */
+char *_strdup(char *str)
+{
+	unsigned int i, length;
+	char *arr;
+
+	if (!str)
+		return (NULL);
+
+	for (length = 0; str[length]; length++)
+		;
+
+	arr = malloc(sizeof(char) * length + 1);
+
+	if (!arr)
+		return (NULL);
+
+	for (i = 0; i < length; i++)
+		arr[i] = str[i];
+
+	return (arr);
+}
+
+
+/**
+ * _strlen - returns the length of a string
+ * @s: string
+ * Return: returns count
+ */
+int _strlen(char *s)
+{
+	int count = 0;
+
+	while (*s != '\0')
+	{
+		s++;
+		count++;
+	}
+	return (count);
+}
+
 int main(void)
 {
-	char *atom = malloc(1024);
-	size_t len = 1024;
+	char **array; /* array of pointers to strings */
+	char *atom = malloc(1024); /* buffer that holds the stdin string */
 	char *token;
-	char *arr;
-	size_t i = 0;
+	char *atom2 = malloc(1024); /* buffer that holds input for arg count */
+	size_t count = 1, i; /* counter */
+	size_t len = 1024;
+
 
 	printf("$ ");
-	/* &atom is addr of buffer, &len is how long */
-	if (getline(&atom, &len, stdin) != 1) /* if not error */
+	/* get input */
+	getline(&atom, &len, stdin); /* save input */
+	atom2 = _strdup(atom); /* save backup for counting args */
+	/* count words */
+	token = strtok(atom2, " ");
+	while (token != NULL)
 	{
-		token = strtok(atom, " ");
-		arr = malloc(strlen(atom));
-		arr[i] = token;
-		while (token)
-		{
-			i++;
-			token = strtok(NULL, " ");
-			arr[i] = token;
-		}
-		for (i = 0; arr[i]; i++)
-		{
-			printf("%s\n", arr[i]);
-		}
-		return (0);
+		token = strtok(NULL, " ");
+		count++;
 	}
+	count++; /* add one more count for NULL */
+	free(atom2); /* free copy of string */
 
-	printf("error");
-	return (-1);	
+	/* assign array tokens */
+	array = malloc(sizeof(char *) * count);
+	token = strtok(atom, " ");
+	for (i = 1; i < count - 1; i++)
+	{
+		//array[i] = malloc(sizeof(_strlen(token)));
+		array[i] = _strdup(token);
+		printf("%s\n", array[i]);
+		token = strtok(NULL, " ");
+	}
+	return (0);
+// should probably return pointer to array instead of int, but printing the value
+// makes it easier to see what it is doing!!!!!!
 }
