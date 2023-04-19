@@ -1,4 +1,9 @@
-#include "main.h"
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 /**
  * _strdup - returns pointer to a copy of string
@@ -44,8 +49,7 @@ int _strlen(char *s)
 	}
 	return (count);
 }
-
-int main(void)
+char *oppenheimer(void)
 {
 	char **array; /* array of pointers to strings */
 	char *atom = malloc(1024); /* buffer that holds the stdin string */
@@ -53,7 +57,6 @@ int main(void)
 	char *atom2 = malloc(1024); /* buffer that holds input for arg count */
 	size_t count = 1, i; /* counter */
 	size_t len = 1024;
-
 
 	printf("$ ");
 	/* get input */
@@ -71,14 +74,19 @@ int main(void)
 	/* assign array tokens */
 	array = malloc(sizeof(char *) * count);
 	token = strtok(atom, " ");
-	for (i = 1; i < count; i++)
+	for (i = 0; i < count - 1; i++)
 	{
 		//array[i] = malloc(sizeof(_strlen(token)));
 		array[i] = _strdup(token);
 		printf("%s\n", array[i]);
 		token = strtok(NULL, " ");
 	}
-	return (0);
+	return (*array);
 // should probably return pointer to array instead of int, but printing the value
 // makes it easier to see what it is doing!!!!!!
+}
+int main(void)
+{
+	oppenheimer();
+	return (0);
 }
