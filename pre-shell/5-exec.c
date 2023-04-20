@@ -12,9 +12,13 @@ int main(void)
 	/* ONLY if not child process */
 	for (i = 0; i < 5 && child_pid != 0; i++)
 	{
-		child_pid = fork();
-		printf("A child is born: %i\n", child_pid);
-		wait(NULL);
+		child_pid = fork(); /* makes child */
+		/* */
+		if (child_pid != 0)
+		{
+			printf("A child is born: %i\n", child_pid);
+			wait(NULL);
+		}
 	}
 	/* executes only if child (lol) */
 	if (child_pid == 0)
