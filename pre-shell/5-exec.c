@@ -22,7 +22,7 @@ int main(void)
 		/* order of arguments is: */
 		/* path, arg, env. Since two args present, */
 		/* then two paths have to be added, one for each */
-		execve(input[1], input, NULL);
+		execve(input[0], input, NULL);
 	}
 	return (0);
 }
