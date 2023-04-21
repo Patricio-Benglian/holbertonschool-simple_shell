@@ -22,11 +22,13 @@ char *_strdup(char *str)
 	return (arr);
 }
 
-int arg_counter(char *restrict str)
+char *string_parse(char *restrict str)
 {
+	char **array; /* array to return */	
 	char *str_cp = malloc(sizeof(str));
 	char *token;
 	size_t count = 0;
+	size_t i;
 
 	str_cp = _strdup(str);
 
@@ -39,23 +41,27 @@ int arg_counter(char *restrict str)
 	/* free copy of string */
 	free(str_cp);
 
+	array = malloc(sizeof(char *) * count);
 	token = strtok(str, " ");
-	return (count);
+	for (i = 0; i < count; i++)
+	{
+		//printf("%s\n", array[i]);
+		token = strtok(NULL, " ");
+		array[i] = _strdup(token);
+	}
+	return (*array);
 }
 
 
 int main(void)
 {
 	char *input = malloc(1); /* recieved from terminal */
+	size_t len = 1; /* length */
 	char *args = NULL; /* recieved argument array */
-	char *command = NULL;
+	pid_t child_pid;
+	char *command;
 	char *path = NULL;
 	char *array = NULL;
-	char *token = NULL;
-	size_t len = 1; /* length */
-	pid_t child_pid;
-	int count;
-	int arg_count;
 
 	input = NULL;
 	while (!input)
@@ -69,15 +75,12 @@ int main(void)
 		}
 		else
 		{
-			count = 0; /* counts */
-			arg_count = string_parse(input); /* recieves arr arg */
-			array = malloc(sizeof(char *) + count);
+			//args = string_parse(input); /* recieves arr arg */
 			command = strtok(input, " ");
 			while (token != NULL)
 			{
 				
 			}
-			
 
 			child_pid = fork(); /* makes child */
 			if (child_pid != 0)
