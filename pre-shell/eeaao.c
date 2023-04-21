@@ -59,6 +59,7 @@ int main(void)
 	size_t len = 1; /* length */
 	char *args = NULL; /* recieved argument array */
 	pid_t child_pid;
+	char *path = NULL;
 
 	input = NULL;
 	while (!input)
@@ -78,7 +79,8 @@ int main(void)
 				wait(NULL);
 			else
 			{
-				execve((const char*)args[0], (char *const *)args, NULL); /* not sure if null */
+				path[0] = args[0];
+				execve((const char *)path, (char *const *)args, NULL); /* not sure if null */
 				return (0);
 			}
 			input = NULL;
