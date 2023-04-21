@@ -46,7 +46,7 @@ char *string_parse(char *restrict str)
 	for (i = 0; i < count; i++)
 	{
 		array[i] = _strdup(token);
-		printf("%s\n", array[i]);
+		//printf("%s\n", array[i]);
 		token = strtok(NULL, " ");
 	}
 	return (*array);
@@ -57,9 +57,8 @@ int main(void)
 {
 	char *input = malloc(1); /* recieved from terminal */
 	size_t len = 1; /* length */
-	char *args = NULL; /* recieved argument array */
+	char **args = NULL; /* recieved argument array */
 	pid_t child_pid;
-	char *path = NULL;
 
 	input = NULL;
 	while (!input)
@@ -79,13 +78,12 @@ int main(void)
 				wait(NULL);
 			else
 			{
-				path[0] = args[0];
-				execve((const char *)path, (char *const *)args, NULL); /* not sure if null */
+				execve(args[0], args, NULL); /* not sure if null */
 				return (0);
 			}
 			input = NULL;
 			free(input);
 		}
 	}
-
+return (-1)
 }
