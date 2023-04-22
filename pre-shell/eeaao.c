@@ -17,10 +17,9 @@ char *_strdup(char *str)
 char *string_parse(char *restrict str)
 {
 	char **array; /* array to return */	
-	char *str_cp = malloc(sizeof(str));
-	char *token;
-	size_t count = 0;
-	size_t i;
+	char *str_cp = malloc(sizeof(str)), *token;
+	size_t count = 0, i;
+
 	str_cp = _strdup(str);
 	token = strtok(str_cp, " ");
 	while (token != NULL)
@@ -44,7 +43,7 @@ int main(void)
 {
 	char *input = malloc(1); /* recieved from terminal */
 	size_t len = 1; /* length */
-	char *args = NULL; /* recieved argument array */
+	char **args = NULL; /* recieved argument array */
 	pid_t child_pid;
 	char *path = NULL;
 
@@ -60,18 +59,22 @@ int main(void)
 		}
 		else
 		{
-			args = string_parse(input); /* recieves arr arg */
+			path = malloc(1024);
+			args = malloc(sizeof(string_parse(input)));
+			*args = string_parse(input); /* recieves arr arg */
 			child_pid = fork(); /* makes child */
 			if (child_pid != 0)
 				wait(NULL);
-			else
+			if (child_pid == 0)
 			{
-				path[0] = args[0];
-				execve((const char *)path, (char *const *)args, NULL); /* not sure if null */
+				sprintf(path, "%s%s", "/usr/bin/", args[0]);
+				execve(path, args, NULL);
 				return (0);
 			}
 			input = NULL;
 			free(input);
+			free(path);
+			free(args);
 		}
 	}
 	return (-1);

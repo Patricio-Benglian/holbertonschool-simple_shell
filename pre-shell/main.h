@@ -2,6 +2,7 @@
 #define MAIN_H
 
 /* Libraries */
+#include <sys/wait.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
