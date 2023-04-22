@@ -30,9 +30,10 @@ char *string_parse(char *restrict str)
 	/* free copy of string */
 	free(str_cp);
 	array = malloc(sizeof(char *) * count);
-	token = strtok(str, " ");
+	token = strtok(str, "\n");
 	for (i = 0; i < count; i++)
 	{
+		//token = strtok(NULL, " ");
 		array[i] = _strdup(token);
 		printf("%s\n", array[i]);
 		token = strtok(NULL, " ");
