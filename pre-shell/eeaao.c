@@ -1,27 +1,19 @@
 #include "main.h"
-
 char *_strdup(char *str)
 {
 	unsigned int i, length;
 	char *arr;
-
 	if (!str)
 		return (NULL);
-
 	for (length = 0; str[length]; length++)
 		;
-
 	arr = malloc(sizeof(char) * length + 1);
-
 	if (!arr)
 		return (NULL);
-
 	for (i = 0; i < length; i++)
 		arr[i] = str[i];
-
 	return (arr);
 }
-
 char *string_parse(char *restrict str)
 {
 	char **array; /* array to return */	
@@ -29,9 +21,7 @@ char *string_parse(char *restrict str)
 	char *token;
 	size_t count = 0;
 	size_t i;
-
 	str_cp = _strdup(str);
-
 	token = strtok(str_cp, " ");
 	while (token != NULL)
 	{
@@ -40,7 +30,6 @@ char *string_parse(char *restrict str)
 	}
 	/* free copy of string */
 	free(str_cp);
-
 	array = malloc(sizeof(char *) * count);
 	token = strtok(str, " ");
 	for (i = 0; i < count; i++)
@@ -51,8 +40,6 @@ char *string_parse(char *restrict str)
 	}
 	return (*array);
 }
-
-
 int main(void)
 {
 	char *input = malloc(1); /* recieved from terminal */
@@ -87,5 +74,5 @@ int main(void)
 			free(input);
 		}
 	}
-
+	return (-1);
 }
