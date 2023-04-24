@@ -1,6 +1,11 @@
+#include "main.h"
+
 int shelly(void)
 {
-    char *args[];
+    char *array = NULL; /* array of arguments */
+    char *command = NULL; /* first arg of input*/
+    char *input = NULL;
+    size_t len;
 
     if (getline(&input, &len, stdin) == -1)
     {
@@ -8,6 +13,7 @@ int shelly(void)
         free(input);
         exit(0);
     }
+    
     
 }
 int main(void)
@@ -17,5 +23,5 @@ int main(void)
         printf("$ ");
         shelly();
     }
-    return (-1)
+    return (-1);
 }

@@ -1,35 +1,26 @@
 #include "main.h"
-
 char *_strdup(char *str)
 {
 	unsigned int i, length;
 	char *arr;
-
 	if (!str)
 		return (NULL);
-
 	for (length = 0; str[length]; length++)
 		;
-
 	arr = malloc(sizeof(char) * length + 1);
-
 	if (!arr)
 		return (NULL);
-
 	for (i = 0; i < length; i++)
 		arr[i] = str[i];
-
 	return (arr);
 }
-
-int arg_counter(char *restrict str)
+char *string_parse(char *str)
 {
-	char *str_cp = malloc(sizeof(str));
-	char *token;
-	size_t count = 0;
+	char **array; /* array to return */	
+	char *str_cp = malloc(sizeof(str)), *token;
+	size_t count = 0, i;
 
 	str_cp = _strdup(str);
-
 	token = strtok(str_cp, " ");
 	while (token != NULL)
 	{
@@ -39,25 +30,23 @@ int arg_counter(char *restrict str)
 	/* free copy of string */
 	free(str_cp);
 
-	token = strtok(str, " ");
-	return (count);
+	array = malloc(sizeof(char *) * count);
+	token = strtok(str, "\n");
+	for (i = 0; i < count; i++)
+	{
+		array[i] = _strdup(token);
+		token = strtok(NULL, " ");
+	}
+	return (*array);
 }
-
-
 int main(void)
 {
-	char *input = malloc(1); /* recieved from terminal */
-	char *args = NULL; /* recieved argument array */
-	char *command = NULL;
-	char *path = NULL;
-	char *array = NULL;
-	char *token = NULL;
+	char *input = NULL; /* recieved from terminal */
 	size_t len = 1; /* length */
+	char **args = NULL; /* recieved argument array */
 	pid_t child_pid;
-	int count;
-	int arg_count;
+	char *path = NULL;
 
-	input = NULL;
 	while (!input)
 	{
 		/* checks if not an error */
@@ -69,28 +58,23 @@ int main(void)
 		}
 		else
 		{
-			count = 0; /* counts */
-			arg_count = string_parse(input); /* recieves arr arg */
-			array = malloc(sizeof(char *) + count);
-			command = strtok(input, " ");
-			while (token != NULL)
-			{
-				
-			}
-			
-
+			path = malloc(1024);
+			args = malloc(sizeof(string_parse(input)));
+			*args = string_parse(input); /* recieves arr arg */
 			child_pid = fork(); /* makes child */
 			if (child_pid != 0)
 				wait(NULL);
-			else
+			if (child_pid == 0)
 			{
-				//path[0] = args[0];
-				execve(path, args, NULL); /* not sure if null */
+				sprintf(path, "%s%s", "/usr/bin/", args[0]);
+				execve(path, args, NULL);
 				return (0);
 			}
 			input = NULL;
 			free(input);
+			free(path);
+			free(args);
 		}
 	}
-return (-1);
+	return (-1);
 }

@@ -49,7 +49,7 @@ int _strlen(char *s)
 	}
 	return (count);
 }
-char *oppenheimer(void)
+int main(void)
 {
 	char **array; /* array of pointers to strings */
 	char *atom = malloc(1024); /* buffer that holds the stdin string */
@@ -81,12 +81,7 @@ char *oppenheimer(void)
 		printf("%s\n", array[i]);
 		token = strtok(NULL, " ");
 	}
-	return (*array);
-// should probably return pointer to array instead of int, but printing the value
-// makes it easier to see what it is doing!!!!!!
-}
-int main(void)
-{
-	oppenheimer();
 	return (0);
+// Should return array not 0 but idk why it doesnt workkkkkkk 
+// 
 }
