@@ -1,4 +1,11 @@
-#include "main.h"
+#include <sys/wait.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+
 char *_strdup(char *str)
 {
 	unsigned int i, length;
@@ -14,10 +21,11 @@ char *_strdup(char *str)
 		arr[i] = str[i];
 	return (arr);
 }
-char *string_parse(char *restrict str)
+char **string_parse(char *str)
 {
 	char **array; /* array to return */	
-	char *str_cp = malloc(sizeof(str)), *token;
+	char *str_cp = malloc(sizeof(str));
+	char *token;
 	size_t count = 0, i;
 
 	str_cp = _strdup(str);
@@ -29,26 +37,26 @@ char *string_parse(char *restrict str)
 	}
 	/* free copy of string */
 	free(str_cp);
+
 	array = malloc(sizeof(char *) * count);
-	token = strtok(str, "\n");
+	token = strtok(str, " \n\t");
 	for (i = 0; i < count; i++)
 	{
-		//token = strtok(NULL, " ");
 		array[i] = _strdup(token);
 		printf("%s\n", array[i]);
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \n\t");
 	}
-	return (*array);
+	array[i + 1] = NULL;
+	return (array);
 }
 int main(void)
 {
-	char *input = malloc(1); /* recieved from terminal */
+	char *input = NULL; /* recieved from terminal */
 	size_t len = 1; /* length */
 	char **args = NULL; /* recieved argument array */
 	pid_t child_pid;
 	char *path = NULL;
 
-	input = NULL;
 	while (!input)
 	{
 		/* checks if not an error */
@@ -62,7 +70,7 @@ int main(void)
 		{
 			path = malloc(1024);
 			args = malloc(sizeof(string_parse(input)));
-			*args = string_parse(input); /* recieves arr arg */
+			args = string_parse(input); /* recieves arr arg */
 			child_pid = fork(); /* makes child */
 			if (child_pid != 0)
 				wait(NULL);

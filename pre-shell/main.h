@@ -13,6 +13,7 @@
 /* Prototypes */
 int main(void);
 char *_strdup(char *str);
-int _strlen(char *s);
-// int main(int ac, char **av);
+char **get_input(void);
+size_t counter(char *str);
+char **string_parse(char *str, size_t count);
 #endif
