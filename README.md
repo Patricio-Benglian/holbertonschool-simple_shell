@@ -27,11 +27,6 @@ $ rm sanity
 $ touch restored_sanity
 ```
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
 ~AUTHORS:
  Patricio "MrKindness" Coitiño and Patricio Benglian.
   ~INFO:
