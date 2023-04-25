@@ -4,12 +4,6 @@ Patricio Benglian and his, for the time being, protégé Patricio "Kindness" Coi
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
 ## Usage
 
 ```
