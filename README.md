@@ -1,16 +1,16 @@
 # Simple Shell
-
-Patricio Benglian and his, for the time being, protégé Patricio "Kindness" Coitiño have been sent into a mission by Holberton in which they have to create a simplified version of Shell. We have been working on this project for at least a week now, and It has been a lot of fun and truly eye opening.
+ Patricio Benglian and his, for the time being, protégé Patricio "Kindness" Coitiño have been sent into a mission by Holberton in which they have to create a simplified version of Shell. We have been working on this project for at least a week now, and It has been a lot of fun and truly eye opening.
 
 ## Authors:
  Patricio "Kindness" Coitiño and Patricio Benglian.
  
-## Installation
+## Installation:
+ Drop all the files in [correct path here] and is ready to go!
 
 ## Usage:
 
 ```
-You have to run [EXE] and you will receive a prompt: "$ ". 
+You have to run shellmain and you will receive a prompt: "$ ". 
 Inside this prompt you will be free to run any command you wish to. 
 For example: 
 
@@ -29,3 +29,17 @@ $ rm sanity
 # Creates a empty file with the given name.
 $ touch restored_sanity
 ```
+
+# Functions:
+
+## main.h
+ An auxiliar main for easen the coding work.
+ 
+## shellmain.c
+ shellmain is the central function of the whole process. 
+ It works, as one can easily assume, by creating a loop and "listening" to the user's input, thus calling many other functions depending on what it has "heard".
+ 
+ ## get_input.c
+  get_input is the first call that shellmain will attempt. If proven succesful get_input will use string_parse and count to return a function call
+  and a series of arguments (if inputed). You can think of get_input as a messenger pidgeon, it goes from the main function asking for calls and arguments
+  and it returns to main with the items asked, provided by the rest of functions.
