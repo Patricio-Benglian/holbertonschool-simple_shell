@@ -10,8 +10,7 @@ int main(void)
     {
         printf("$ ");
         args = get_input();
-        if (args != NULL)
-        {}
+       
         //get_env to add later
         //execve should be in child stuff hahaha
         path = malloc(sizeof(args[0]));
@@ -23,6 +22,7 @@ int main(void)
         }
         if (child == 0)
         {
+        sprintf(path, "%s%s", "/usr/bin/", args[0]);
         execve(path, args, NULL);
         }
     }

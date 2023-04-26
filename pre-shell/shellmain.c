@@ -23,6 +23,7 @@ int main(void)
         }
         if (child == 0)
         {
+        sprintf(path, "%s%s", "/usr/bin/", args[0]);
         execve(path, args, NULL);
         }
     }

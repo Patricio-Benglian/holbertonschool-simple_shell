@@ -7,8 +7,8 @@ char **get_input(void)
 
     if (getline(&input, &len, stdin) == -1)
     {
-        printf("Error\n");
-        return (NULL);
+        printf("Exiting...\n");
+        exit (0);
     }
     return (string_parse(input, counter(input)));
 }

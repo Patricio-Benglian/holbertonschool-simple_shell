@@ -11,7 +11,6 @@ char **string_parse(char *str, size_t count)
     {
         array[i] = _strdup(token);
         token = strtok(NULL, " \n\t");
-        printf("%s\n", array[i]);
     }
     return (array);
 }
