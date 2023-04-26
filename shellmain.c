@@ -14,7 +14,6 @@ int main(void)
         //get_env to add later
         //execve should be in child stuff hahaha
         path = malloc(sizeof(args[0]));
-        sprintf(path, "%s%s", "/usr/bin/", args[0]);
         child = fork();
         if (child != 0)
         {
@@ -24,6 +23,11 @@ int main(void)
         {
         sprintf(path, "%s%s", "/usr/bin/", args[0]);
         execve(path, args, NULL);
+        return (0);
+        }
+        if (child < 0)
+        {
+            return (-1);
         }
     }
     return (-1);
