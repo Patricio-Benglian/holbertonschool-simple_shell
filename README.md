@@ -1,5 +1,8 @@
+# Status
+Still under development.
+
 # Simple Shell
- Patricio Benglian and his, for the time being, protégé Patricio "Kindness" Coitiño have been sent into a mission by Holberton in which they have to create a simplified version of Shell. We have been working on this project for at least a week now, and It has been a lot of fun and truly eye opening.
+A simplified clone of shell proyect. It was tasked by Holberton School Uruguay to Patricio Benglian and Patricio "Kindness" Coitiño.
 
 ## Authors:
  Patricio "Kindness" Coitiño and Patricio Benglian.
