@@ -23,8 +23,6 @@ int exec_func(char *path, char **args)
     if (child == 0)
     {
         execve(path, args, environ);
-        return (1);
     }
-
-    return (1);
+    return (0); /* expects return of 0?*/
 }
