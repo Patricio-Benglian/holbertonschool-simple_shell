@@ -43,6 +43,6 @@ $ touch restored_sanity
  It works, as one can easily assume, by creating a loop and "listening" to the user's input, thus calling many other functions depending on what it has "heard".
  
  ## get_input.c
-  get_input is the first call that shellmain will attempt. If proven succesful get_input will use string_parse and count to return a function call
+  get_input is the first call that shellmain will attempt. If proven succesful get_input will call string_parse and feeds it count as an argument to return a function call
   and a series of arguments (if inputed). You can think of get_input as a messenger pidgeon, it goes from the main function asking for calls and arguments
   and it returns to main with the items asked, provided by the rest of functions.
