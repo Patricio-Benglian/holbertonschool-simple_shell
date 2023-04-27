@@ -24,10 +24,17 @@ int main(void)
             free(input);
             exit(0);
         }
-        if (child == 0)
-        {
-            execve(path, args, NULL);
-        }
+        args = string_parse(input);
+        pathenv = strdup(_getenv());
+        path = path_parse(pathenv);
+
+        filepath = _which(args[0], path);
+
+        exec_func(filepath, args);
+
+        free(args);
+        free(path);
+        free(pathenv);
     }
     return (-1);
 }
