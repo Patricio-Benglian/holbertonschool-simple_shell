@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * main - shell main function
+ *
+ * Return: -1 on error
+ */
+
 int main(void)
 {
     char **args = NULL;
@@ -13,23 +19,22 @@ int main(void)
     {
         printf("$ ");
 
-    if (getline(&input, &len, stdin) == -1)
-    {
-        free(input);
-        exit (0);
-    }
-        args = malloc(1024);
-        path = malloc(1024);
-        /* get args and path */
-        args = string_parse(input, counter(input));
-        pathenv = _getenv();
-        path = path_parse(pathenv, pathcounter(pathenv));
-        
-         filepath = _which(args[0], path);
-         exec_func(filepath, args);
+        if (getline(&input, &len, stdin) == -1)
+        {
+            free(input);
+            exit(0);
+        }
+        args = string_parse(input);
+        pathenv = strdup(_getenv());
+        path = path_parse(pathenv);
+
+        filepath = _which(args[0], path);
+
+        exec_func(filepath, args);
 
         free(args);
         free(path);
+        free(pathenv);
     }
     return (-1);
 }

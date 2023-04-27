@@ -2,10 +2,10 @@
 
 size_t counter(char *str)
 {
-    char *str_cp = malloc(sizeof(str)), *token;
-	size_t count = 0;
+	char *str_cp = malloc(sizeof(str)), *token;
+	size_t count = 1;
 
-    str_cp = strdup(str);
+	str_cp = strdup(str);
 	token = strtok(str_cp, " ");
 	while (token != NULL)
 	{
@@ -14,15 +14,15 @@ size_t counter(char *str)
 	}
 	/* free copy of string */
 	free(str_cp);
-    return (count);
+	return (count);
 }
 
 size_t pathcounter(char *str)
 {
-    char *str_cp = malloc(sizeof(str)), *token;
-	size_t count = 0;
+	char *str_cp = malloc(sizeof(str)), *token;
+	size_t count = 1;
 
-    str_cp = _strdup(str);
+	str_cp = _strdup(str);
 	token = strtok(str_cp, ":");
 	while (token != NULL)
 	{
@@ -31,5 +31,5 @@ size_t pathcounter(char *str)
 	}
 	/* free copy of string */
 	free(str_cp);
-    return (count);
+	return (count);
 }
