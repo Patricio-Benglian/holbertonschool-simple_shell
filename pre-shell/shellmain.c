@@ -3,28 +3,33 @@
 int main(void)
 {
     char **args = NULL;
-    char *path;
-    pid_t child;
+    char **path = NULL;
+    char *input = NULL;
+    char *pathenv = NULL;
+    char *filepath = NULL;
+    size_t len = 0;
 
     while (1)
     {
         printf("$ ");
-        args = get_input();
-        if (args != NULL)
-        {}
-        //get_env to add later
-        //execve should be in child stuff hahaha
-        path = malloc(sizeof(args[0]));
-        sprintf(path, "%s%s", "/usr/bin/", args[0]);
-        child = fork();
-        if (child != 0)
-        {
-            wait(NULL);
-        }
-        if (child == 0)
-        {
-        execve(path, args, NULL);
-        }
+
+    if (getline(&input, &len, stdin) == -1)
+    {
+        free(input);
+        exit (0);
+    }
+        args = malloc(1024);
+        path = malloc(1024);
+        /* get args and path */
+        args = string_parse(input, counter(input));
+        pathenv = _getenv();
+        path = path_parse(pathenv, pathcounter(pathenv));
+        
+         filepath = _which(args[0], path);
+         exec_func(filepath, args);
+
+        free(args);
+        free(path);
     }
     return (-1);
 }
