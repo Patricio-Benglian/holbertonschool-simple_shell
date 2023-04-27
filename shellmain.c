@@ -24,12 +24,13 @@ int main(void)
             exit(1);
         }
         args = string_parse(input);
-        if (is_exit(args))
-        {
+        // if (is_exit(args))
+        /*{
             free(args);
             free(input);
             exit(1);
         }
+        */
         pathenv = strdup(_getenv());
         path = path_parse(pathenv);
 
