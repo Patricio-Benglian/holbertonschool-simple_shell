@@ -9,21 +9,21 @@
 
 size_t counter(char *str)
 {
-    char *str_cp = NULL;
-    char *token = NULL;
-    size_t count = 1;
+	char *str_cp = NULL;
+	char *token = NULL;
+	size_t count = 1;
 
-    str_cp = strdup(str);
-    token = strtok(str_cp, " ");
-    while (token != NULL)
-    {
-        token = strtok(NULL, " ");
-        count++;
-    }
-    /* free copy of string */
-    free(str_cp);
-    free(token);
-    return (count);
+	str_cp = strdup(str);
+	token = strtok(str_cp, " ");
+	while (token != NULL)
+	{
+		token = strtok(NULL, " ");
+		count++;
+	}
+	/* free copy of string */
+	free(str_cp);
+	free(token);
+	return (count);
 }
 
 /**
@@ -35,21 +35,21 @@ size_t counter(char *str)
 
 size_t pathcounter(char *str)
 {
-    char *path_cp = NULL;
-    char *token = NULL;
-    size_t count = 1;
+	char *path_cp = NULL;
+	char *token = NULL;
+	size_t count = 1;
 
-    path_cp = _strdup(str);
-    token = strtok(path_cp, ":");
-    while (token != NULL)
-    {
-        token = strtok(NULL, ":");
-        count++;
-    }
-    /* free copy of string */
-    free(path_cp);
-    free(token);
-    return (count);
+	path_cp = _strdup(str);
+	token = strtok(path_cp, ":");
+	while (token != NULL)
+	{
+		token = strtok(NULL, ":");
+		count++;
+	}
+	/* free copy of string */
+	free(path_cp);
+	free(token);
+	return (count);
 }
 
 /**
@@ -60,21 +60,21 @@ size_t pathcounter(char *str)
  */
 char **string_parse(char *str)
 {
-    char **arr = NULL;
-    char *token = NULL;
-    size_t i = 0, count = 0; /* iterator */
+	char **arr = NULL;
+	char *token = NULL;
+	size_t i = 0, count = 0; /* iterator */
 
-    count = counter(str);
-    arr = malloc(sizeof(char *) * count + 1);
-    token = strtok(str, " \n\t");
-    for (i = 0; token != NULL; i++)
-    {
-        arr[i] = token;
-        token = strtok(NULL, " \n\t");
-    }
-    arr[i] = NULL;
-    free(token);
-    return (arr);
+	count = counter(str);
+	arr = malloc(sizeof(char *) * count + 1);
+	token = strtok(str, " \n\t");
+	for (i = 0; token != NULL; i++)
+	{
+		arr[i] = token;
+		token = strtok(NULL, " \n\t");
+	}
+	arr[i] = NULL;
+	free(token);
+	return (arr);
 }
 
 /**
@@ -85,19 +85,19 @@ char **string_parse(char *str)
  */
 char **path_parse(char *str)
 {
-    char **arr = NULL;
-    char *token = NULL;
-    size_t i = 0, count = 0; /* iterator */
+	char **arr = NULL;
+	char *token = NULL;
+	size_t i = 0, count = 0; /* iterator */
 
-    count = pathcounter(str);
-    arr = malloc(sizeof(char *) * (count + 1));
-    token = strtok(str, "=");
-    for (i = 0; token != NULL; i++)
-    {
-        token = strtok(NULL, ":");
-        arr[i] = token;
-    }
-    arr[i] = NULL;
-    free(token);
-    return (arr);
+	count = pathcounter(str);
+	arr = malloc(sizeof(char *) * (count + 1));
+	token = strtok(str, "=");
+	for (i = 0; token != NULL; i++)
+	{
+		token = strtok(NULL, ":");
+		arr[i] = token;
+	}
+	arr[i] = NULL;
+	free(token);
+	return (arr);
 }
