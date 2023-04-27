@@ -22,6 +22,7 @@ size_t counter(char *str)
     }
     /* free copy of string */
     free(str_cp);
+    free(token);
     return (count);
 }
 
@@ -47,6 +48,7 @@ size_t pathcounter(char *str)
     }
     /* free copy of string */
     free(path_cp);
+    free(token);
     return (count);
 }
 
@@ -71,6 +73,7 @@ char **string_parse(char *str)
         token = strtok(NULL, " \n\t");
     }
     arr[i] = NULL;
+    free(token);
     return (arr);
 }
 
@@ -95,5 +98,6 @@ char **path_parse(char *str)
         arr[i] = token;
     }
     arr[i] = NULL;
+    free(token);
     return (arr);
 }
