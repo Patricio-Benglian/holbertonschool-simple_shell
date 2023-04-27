@@ -18,13 +18,18 @@ int main(void)
     while (1)
     {
         printf("$ ");
-
         if (getline(&input, &len, stdin) == -1)
         {
             free(input);
-            exit(0);
+            exit(1);
         }
         args = string_parse(input);
+        if (is_exit(args))
+        {
+            free(args);
+            free(input);
+            exit(1);
+        }
         pathenv = strdup(_getenv());
         path = path_parse(pathenv);
 
@@ -32,6 +37,7 @@ int main(void)
 
         exec_func(filepath, args);
 
+        free(filepath);
         free(args);
         free(path);
         free(pathenv);

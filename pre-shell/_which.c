@@ -33,11 +33,11 @@ char *_which(char *arg, char **arr)
     {
         return (arg);
     }
-    filepath = malloc(sizeof(char *) + strlen(arg) + strlen(arr[0]) + 2);
+    filepath = malloc(sizeof(char) + strlen(arg) + strlen(arr[0]) + 2);
     if (!filepath)
     {
         free(filepath);
-        exit(0);
+        exit(1);
     }
     for (i = 0; arr[i]; i++)
     {
