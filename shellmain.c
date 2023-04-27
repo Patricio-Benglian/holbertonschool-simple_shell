@@ -21,17 +21,17 @@ int main(void)
 		if (getline(&input, &len, stdin) == -1)
 		{
 			free(input);
-			exit(1);
+			exit(0);
 		}
 		args = string_parse(input);
 		/* if (is_exit(args)) */
 		/**
-		*{
-		*free(args);
-		*free(input);
-		*exit(1);
-		*}
-		*/
+		 *{
+		 *free(args);
+		 *free(input);
+		 *exit(1);
+		 *}
+		 */
 		pathenv = strdup(_getenv());
 		path = path_parse(pathenv);
 
