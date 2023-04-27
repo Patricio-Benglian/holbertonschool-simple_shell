@@ -1,30 +1,32 @@
 #include "main.h"
 
+/**
+ * main - shell main function
+ *
+ * Return: -1 on error
+ */
+
 int main(void)
 {
     char **args = NULL;
-    char *path;
-    pid_t child;
+    char **path = NULL;
+    char *input = NULL;
+    char *pathenv = NULL;
+    char *filepath = NULL;
+    size_t len = 0;
 
     while (1)
     {
         printf("$ ");
-        args = get_input();
-        if (args != NULL)
-        {}
-        //get_env to add later
-        //execve should be in child stuff hahaha
-        path = malloc(sizeof(args[0]));
-        sprintf(path, "%s%s", "/usr/bin/", args[0]);
-        child = fork();
-        if (child != 0)
+
+        if (getline(&input, &len, stdin) == -1)
         {
-            wait(NULL);
+            free(input);
+            exit(0);
         }
         if (child == 0)
         {
-        sprintf(path, "%s%s", "/usr/bin/", args[0]);
-        execve(path, args, NULL);
+            execve(path, args, NULL);
         }
     }
     return (-1);
