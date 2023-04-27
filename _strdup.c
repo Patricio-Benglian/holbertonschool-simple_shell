@@ -11,6 +11,7 @@ char *_strdup(char *str)
 {
 	unsigned int i = 0, length = 0;
 	char *arr = NULL;
+
 	if (!str)
 		return (NULL);
 	for (length = 0; str[length]; length++)
