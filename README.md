@@ -35,14 +35,28 @@ $ touch restored_sanity
 
 # Functions:
 
+# _strdup.c
+ _strdup is a clone of strdup, it's work is to copy strings and return them.
 ## main.h
  An auxiliar main for easen the coding work.
  
-## shellmain.c
+# shellmain.c
  shellmain is the central function of the whole process. 
- It works, as one can easily assume, by creating a loop and "listening" to the user's input, thus calling many other functions depending on what it has "heard".
+ It works, as one can easily assume, by creating a loop (using atty) and "listening" to the user's input,
+ thus calling many other functions depending on what it has "heard".
+
+# strtok.c
+ strtok.c contains all functions that work using tokenization.
  
- ## get_input.c
-  get_input is the first call that shellmain will attempt. If proven succesful get_input will call string_parse and feeds it count as an argument to return a function call
-  and a series of arguments (if inputed). You can think of get_input as a messenger pidgeon, it goes from the main function asking for calls and arguments
-  and it returns to main with the items asked, provided by the rest of functions.
+## counter
+ counter, unsurprisingly, counts how many arguments are tokanized from the user's inputs.
+  
+## pathcounter
+ pathcounter, again, counts how many directories are in given path using tokenization.
+   
+## string_parse
+ string_parse's sole work is to break into pieces given strings to create "words" or, more precisely, arguments.
+    
+## path_parse
+ path_parse's, like its sibling, is to separate given strings using tokenization. The difference is that path_parse is made for breaking path directories.
+ 
