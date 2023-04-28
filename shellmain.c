@@ -23,7 +23,7 @@ int main(void)
 			if (isatty(fileno(stdin)))
 				printf("\n");
 			free(input);
-			exit(errno);
+			exit(0);
 		}
 		args = string_parse(input);
 		if (args[0]) /* exit built in */
@@ -32,7 +32,7 @@ int main(void)
 			{
 				free(args);
 				free(input);
-				exit(errno);
+				exit(0);
 			}
 		}
 		else
