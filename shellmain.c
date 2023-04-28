@@ -8,42 +8,56 @@
 
 int main(void)
 {
-	char **args = NULL;
-	char **path = NULL;
-	char *input = NULL;
-	char *pathenv = NULL;
+	char **args = NULL, **path = NULL, *input = NULL, *pathenv = NULL;
 	char *filepath = NULL;
 	size_t len = 0;
 
-	/* isatty */
 	while (1)
 	{
-		printf("$ ");
+	atty:
+		if (isatty(fileno(stdin)))
+		{
+			printf("📎 ");
+			fflush(stdout);
+		}
+
 		if (getline(&input, &len, stdin) == -1)
 		{
+			if (isatty(fileno(stdin)))
+				printf("\n");
 			free(input);
 			exit(0);
 		}
 		args = string_parse(input);
-		/* if (is_exit(args)) */
-		/**
-		 *{
-		 *free(args);
-		 *free(input);
-		 *exit(1);
-		 *}
-		 */
+		if (args[0]) /* exit built in */
+		{
+			if (strcmp(args[0], "exit") == 0)
+			{
+				printf("\n");
+				free(args);
+				free(input);
+				exit(0);
+			}
+		}
+		else
+		{
+			free(args);
+			goto atty;
+		}
+
 		pathenv = strdup(_getenv());
 		path = path_parse(pathenv);
 
 		filepath = _which(args[0], path);
 
-		exec_func(filepath, args);
-
-		free(filepath);
-		free(args);
+		if (filepath != NULL)
+		{
+			exec_func(filepath, args);
+			free(filepath);
+		}
 		free(path);
+		free(args);
 		free(pathenv);
 	}
-	return (-1);
+	return (0);
 }

@@ -66,11 +66,11 @@ char **string_parse(char *str)
 
 	count = counter(str);
 	arr = malloc(sizeof(char *) * count + 1);
-	token = strtok(str, " \n\t");
+	token = strtok(str, " \n\t\r\a");
 	for (i = 0; token != NULL; i++)
 	{
 		arr[i] = token;
-		token = strtok(NULL, " \n\t");
+		token = strtok(NULL, " \n\t\r\a");
 	}
 	arr[i] = NULL;
 	free(token);
