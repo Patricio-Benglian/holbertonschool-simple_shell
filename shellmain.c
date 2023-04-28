@@ -18,7 +18,7 @@ int main(void)
 		if (isatty(fileno(stdin)))
 		{
 			printf("📎 ");
-			fflush(stdout);
+			fflush(STDOUT_FILENO);
 		}
 
 		if (getline(&input, &len, stdin) == -1)
