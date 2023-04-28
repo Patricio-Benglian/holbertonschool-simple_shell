@@ -35,12 +35,11 @@ int main(void)
 				exit(0);
 			}
 		}
-		else
+		else /* args is NULL */
 		{
 			free(args);
 			goto atty;
 		}
-
 		pathenv = strdup(_getenv());
 		path = path_parse(pathenv);
 
@@ -54,7 +53,6 @@ int main(void)
 		free(path);
 		free(args);
 		free(pathenv);
-		fflush(stdout);
 	}
 	return (0);
 }

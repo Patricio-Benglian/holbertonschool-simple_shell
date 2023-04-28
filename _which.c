@@ -29,19 +29,23 @@ char *_which(char *arg, char **arr)
 	char *filepath = NULL;
 	size_t i = 0; /* iterator */
 
-	if (access(arg, F_OK) == 0)
-	{
-		return (arg);
-	}
 	filepath = malloc(sizeof(char) * strlen(arg) + strlen(arr[0]) + 2);
 	if (!filepath)
 	{
 		exit(1);
 	}
+	/* checks if input is full filepath */
+	if (access(arg, F_OK) == 0)
+	{
+		free(filepath);
+		filepath = strdup(arg);
+		return (filepath);
+	}
+
 	for (i = 0; arr[i]; i++)
 	{
 		sprintf(filepath, "%s/%s", arr[i], arg);
-		if (access(filepath, F_OK) == 0) /* check if execute perms and exists*/
+		if (access(filepath, F_OK) == 0)
 			return (filepath);
 	}
 	if (!arr[i]) /* is null (end of arr) */
