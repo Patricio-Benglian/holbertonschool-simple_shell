@@ -25,5 +25,5 @@ int exec_func(char *path, char **args)
         execve(path, args, environ);
         exit(1);
     }
-    return (1);
+    return (0);
 }
