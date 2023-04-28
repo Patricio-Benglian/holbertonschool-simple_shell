@@ -15,6 +15,7 @@ int main(void)
 	char *filepath = NULL;
 	size_t len = 0;
 
+	/* isatty */
 	while (1)
 	{
 		printf("$ ");
