@@ -16,10 +16,7 @@ int main(void)
 	{
 	atty:
 		if (isatty(fileno(stdin)))
-		{
 			printf("📎 ");
-			fflush(stdout);
-		}
 
 		if (getline(&input, &len, stdin) == -1)
 		{
@@ -33,7 +30,6 @@ int main(void)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
-				printf("\n");
 				free(args);
 				free(input);
 				exit(0);
@@ -58,6 +54,7 @@ int main(void)
 		free(path);
 		free(args);
 		free(pathenv);
+		fflush(stdout);
 	}
 	return (0);
 }

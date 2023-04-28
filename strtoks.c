@@ -39,7 +39,8 @@ size_t pathcounter(char *str)
 	char *token = NULL;
 	size_t count = 1;
 
-	path_cp = _strdup(str);
+	path_cp = malloc(strlen(str) + 1);
+	strcpy(path_cp, str);
 	token = strtok(path_cp, ":");
 	while (token != NULL)
 	{
