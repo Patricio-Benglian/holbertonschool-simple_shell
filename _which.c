@@ -29,15 +29,18 @@ char *_which(char *arg, char **arr)
 	char *filepath = NULL;
 	size_t i = 0; /* iterator */
 
-	if (access(arg, F_OK) == 0)
-	{
-		return (arg);
-	}
 	filepath = malloc(sizeof(char) * strlen(arg) + strlen(arr[0]) + 2);
 	if (!filepath)
 	{
 		exit(1);
 	}
+	/* checks if input is full filepath */
+	if (access(arg, F_OK) == 0)
+	{
+		filepath = arg;
+		return (filepath);
+	}
+
 	for (i = 0; arr[i]; i++)
 	{
 		sprintf(filepath, "%s/%s", arr[i], arg);
