@@ -37,14 +37,15 @@ char *_which(char *arg, char **arr)
 	/* checks if input is full filepath */
 	if (access(arg, F_OK) == 0)
 	{
-		filepath = arg;
+		free(filepath);
+		filepath = strdup(arg);
 		return (filepath);
 	}
 
 	for (i = 0; arr[i]; i++)
 	{
 		sprintf(filepath, "%s/%s", arr[i], arg);
-		if (access(filepath, F_OK) == 0) /* check if execute perms and exists*/
+		if (access(filepath, F_OK) == 0)
 			return (filepath);
 	}
 	if (!arr[i]) /* is null (end of arr) */
