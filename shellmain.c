@@ -26,7 +26,7 @@ int main(void)
 			if (isatty(fileno(stdin)))
 				printf("\n");
 			free(input);
-			exit(0);
+			exit;
 		}
 		args = string_parse(input);
 		if (args[0]) /* exit built in */
