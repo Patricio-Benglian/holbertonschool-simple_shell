@@ -30,10 +30,9 @@ int main(void)
 		{
 			if (strcmp(args[0], "exit") == 0)
 			{
-				printf("\n");
 				free(args);
 				free(input);
-				errno;
+				exit(0);
 			}
 		}
 		else
