@@ -8,8 +8,12 @@ A simplified clone of shell proyect. It was tasked by Holberton School Uruguay t
  Patricio "Kindness" Coitiño and Patricio Benglian.
  
 ## Installation:
- Drop all the files in [correct path here] and is ready to go!
-
+ Run:
+ ```
+ git clone https://github.com/Patricio-Benglian/holbertonschool-simple_shell.git
+ ```
+ in a directory of your choice. After cloned, you can enter holberton-simple-shell and enjoy.
+ 
 ## Usage:
 
 ```
@@ -35,28 +39,34 @@ $ touch restored_sanity
 
 # Functions:
 
-# _strdup.c
+## _strdup.c
  _strdup is a clone of strdup, it's work is to copy strings and return them.
-## main.h
+ 
+## _which.c
+ _which.c contains pathfinding functions.
+ 
+### _getenv
+_getenv searches for PATH's direction inside the enviroment, and then returns the direction. Knowing where it is helps to read PATH's stored value.
+### main.h
  An auxiliar main for easen the coding work.
  
-# shellmain.c
+## shellmain.c
  shellmain is the central function of the whole process. 
  It works, as one can easily assume, by creating a loop (using atty) and "listening" to the user's input,
  thus calling many other functions depending on what it has "heard".
 
-# strtok.c
+## strtok.c
  strtok.c contains all functions that work using tokenization.
  
-## counter
+### counter
  counter, unsurprisingly, counts how many arguments are tokanized from the user's inputs.
   
-## pathcounter
+### pathcounter
  pathcounter, again, counts how many directories are in given path using tokenization.
    
-## string_parse
+### string_parse
  string_parse's sole work is to break into pieces given strings to create "words" or, more precisely, arguments.
     
-## path_parse
- path_parse's, like its sibling, is to separate given strings using tokenization. The difference is that path_parse is made for breaking path directories.
+### path_parse
+ path_parse's purpose, like its sibling, is to separate given strings using tokenization. The difference is that path_parse is made for breaking path directories.
  
