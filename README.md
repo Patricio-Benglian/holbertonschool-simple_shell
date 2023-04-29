@@ -49,7 +49,7 @@ $ touch restored_sanity
  _getenv searches for PATH's direction inside the enviroment, and then returns the direction. Knowing where it is helps to read PATH's stored value.
 
 ### _which
- _which checks if the given command exits within the current PATH.
+ _which checks if the given command exists within the current PATH.
  
 ## exec_func.c
  exec_func executes a command from filepath using given arguments. 
