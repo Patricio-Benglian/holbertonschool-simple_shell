@@ -43,11 +43,15 @@ $ touch restored_sanity
  _strdup is a clone of strdup, it's work is to copy strings and return them.
  
 ## _which.c
- _which.c contains pathfinding functions.
+ _which.c contains pathfinding functions. 
  
 ### _getenv
-_getenv searches for PATH's direction inside the enviroment, and then returns the direction. Knowing where it is helps to read PATH's stored value.
-### main.h
+ _getenv searches for PATH's direction inside the enviroment, and then returns the direction. Knowing where it is helps to read PATH's stored value.
+
+### _which
+ _which checks if the given command exits within the current PATH.
+ 
+## main.h
  An auxiliar main for easen the coding work.
  
 ## shellmain.c
