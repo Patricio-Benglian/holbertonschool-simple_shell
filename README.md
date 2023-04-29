@@ -51,6 +51,9 @@ $ touch restored_sanity
 ### _which
  _which checks if the given command exits within the current PATH.
  
+## exec_func.c
+ exec_func executes a command from filepath using given arguments. 
+ 
 ## main.h
  An auxiliar main for easen the coding work.
  
