@@ -14,7 +14,7 @@ int main(void)
 
 	while (1)
 	{
-	atty:
+atty:
 		if (isatty(fileno(stdin)))
 			printf("📎 ");
 
@@ -23,8 +23,7 @@ int main(void)
 			if (isatty(fileno(stdin)))
 				printf("\n");
 			free(input);
-			exit(0);
-		}
+			exit(0);	}
 		args = string_parse(input);
 		if (args[0]) /* exit built in */
 		{
@@ -32,27 +31,20 @@ int main(void)
 			{
 				free(args);
 				free(input);
-				exit(0);
-			}
-		}
+				exit(0);	}	}
 		else /* args is NULL */
-		{
-			free(args);
-			goto atty;
-		}
+		{	free(args);
+			goto atty;	}
 		pathenv = strdup(_getenv());
 		path = path_parse(pathenv);
 
 		filepath = _which(args[0], path);
 
 		if (filepath != NULL)
-		{
-			exec_func(filepath, args);
-			free(filepath);
-		}
+		{	exec_func(filepath, args);
+			free(filepath);	}
 		free(path);
 		free(args);
 		free(pathenv);
 	}
-	return (0);
-}
+	return (0);	}
