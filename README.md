@@ -77,3 +77,4 @@ $ touch restored_sanity
 ### path_parse
  path_parse's purpose, like its sibling, is to separate given strings using tokenization. The difference is that path_parse is made for breaking path directories.
  
+![Untitled(1)](https://user-images.githubusercontent.com/121252659/235329451-1331c516-b412-4171-ac0c-8f8b8e79ec82.jpg)
