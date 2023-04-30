@@ -1,6 +1,3 @@
-# Status
-Still under development.
-
 # Simple Shell
 A simplified clone of shell proyect. It was tasked by Holberton School Uruguay to Patricio Benglian and Patricio "Kindness" Coitiño.
 
