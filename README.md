@@ -4,12 +4,6 @@
 A shell project with basic functionality. It was tasked by Holberton School Uruguay to Patricio Benglian and Patricio "Kindness" Coitiño as the final project of the first trimester.
 </div>
 
-## Authors:
-
-<img src="https://user-images.githubusercontent.com/124268011/235376824-ae778443-ac5a-4a78-9f0d-fa6fcd96d5c4.png" height="35" width="35"> Patricio "Kindness" Coitiño
-
-<img src="https://user-images.githubusercontent.com/124268011/235376799-2a26ede6-4f75-4997-9857-6bf657a46c06.png" height="35" width="35"> Patricio Benglian
- 
 ## Installation:
  Run:
  ```
@@ -76,3 +70,10 @@ $ touch restored_sanity
  _strdup is a clone of strdup. It was eventually replaced with the standard strdup, and is now merely vestigial.
  
 ![Untitled(1)](https://user-images.githubusercontent.com/121252659/235329451-1331c516-b412-4171-ac0c-8f8b8e79ec82.jpg)
+
+## Authors:
+
+<img src="https://user-images.githubusercontent.com/124268011/235376824-ae778443-ac5a-4a78-9f0d-fa6fcd96d5c4.png" height="35" width="35"> Patricio "Kindness" Coitiño
+
+<img src="https://user-images.githubusercontent.com/124268011/235376799-2a26ede6-4f75-4997-9857-6bf657a46c06.png" height="35" width="35"> Patricio Benglian
+ 
